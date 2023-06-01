@@ -1,4 +1,6 @@
 import br.com.alura.screenmatch.calculos.CalculadoraDeTempo;
+import br.com.alura.screenmatch.calculos.FiltroRecomendacao;
+import br.com.alura.screenmatch.modelos.Episodio;
 import br.com.alura.screenmatch.modelos.Filme;
 import br.com.alura.screenmatch.modelos.Serie;
 
@@ -31,12 +33,20 @@ public class Principal {
         calculadora.inclui(outro);
         calculadora.inclui(serie);
 
-        System.out.println("----------------------->>>>>> testando calculadora de tempo ");
+        System.out.println("----------------------->>>>>> \nTESTE 01: testando calculadora de tempo ");
         System.out.println("Tempo total: " +calculadora.getTempoTotal());
 
-
-        System.out.println("----------------------->>>>>> TESTE: imprimindo ficha técnica ");
+        System.out.println("----------------------->>>>>> \nTESTE 02: imprimindo ficha técnica ");
         favorito.exibeFichaTecnica();
 
+        System.out.println("----------------------->>>>>> \nTESTE 03: testando recomendação ");
+        FiltroRecomendacao filtro = new FiltroRecomendacao();
+        filtro.filtra(outro);
+        filtro.filtra(favorito);
+        Episodio e = new Episodio();
+        e.setSerie(serie);
+        e.setNumero(1);
+        e.setTotalVisualisacoes(300);
+        filtro.filtra(e);
     }
 }
